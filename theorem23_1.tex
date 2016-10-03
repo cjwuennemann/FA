@@ -1,0 +1,63 @@
+\documentclass[a4paper, 10pt]{article}
+\usepackage[document]{ragged2e}
+\usepackage{amsmath}
+
+\begin{document}
+\section{Theorem 23.1}
+Let $G = (V,E)$ be a connected undirected graph
+\begin{itemize}
+	\item $w$, real valued weight function
+	\item $A$, subset of $E$ that is included in some minimum spanning tree for $G$
+	\item $(S,V-S)$, any cut of $G$ that respects $A$
+	\item $(u,v)$ is safe for $A$
+\end{itemize}
+
+\section{Proof:}
+\begin{enumerate}
+	\item Let $T$ be a minimum spanning tree that includes $A$ 
+	\item Assume $T$ does not contain light edge $(u,v)$
+	\item Since it does we are done
+	\item We construct another minimum spanning tree $T'$ that includes 
+		$A\cup \{u,v\}$
+	\item Therefore, we show that $(u,v)$ is a safe edge for $A$
+	\item $(u,v)$ forms a cycle with the edges on simple path $p$ from $u$ to
+		$v$ in $T$
+	\item Since $u,v$ are on opposite sides of cut $(S,V-S)$ at least one edge 
+		in $T$ lies on the simple path $p$ and also corsses the cut
+	\item Let $(x,y)$ be an edge that lies on the simple path $p$ and also 
+		crosses the edge
+	\item $(x,y)$ is not in $A$ because the cut respects $A$
+	\item Removing $(x,y)$ breaks $T$ into 2 components
+	\item Adding $(u,v)$ reconnects them to form a new spanning tree to form a new 
+		spanning tree $T'=T-\{(x,y)\}\cup\{(u,v)\}$
+	\item We show that $T'$ is a minimum spanning tree
+	\item Since $(u,v)$ is a light edge crossing $(S,V-S)$ and $(x,y)$ crosses
+		this cut $w(u,v)\leq w(x,y)$
+	\item Therefore, \begin{align*} w(T')&=w(T)-w(x,y)+w(u,v) \\
+		&\leq w(T)\end{align*}
+	\item But $T$ is a minimum spanning tree, $w(T)\leq w(T')$
+	\item We show that $(u,v)$ is actually a safe edge for $A$
+	\item We have $A\leq T'$ since $A\leq T$ and $(x,y)\notin A$
+	\item $A\cup\{(u,v)\}\leq T'$
+	\item Since $T'$ is a minimum spanning tree $(u,v)$ is safe for $A$
+\end{enumerate}
+	
+\section{$G_A =(V,A)$ is a forest, each of the connected components of $G_A$ is 
+		a tree}
+\section{While loop in lines 2-4 of GENERIC-MIST executes $|V|-1$ because it
+		finds one of the $|V|-1$ edges in each iteration}
+\section{Corollary 23.1:}
+Let $G=(V,E)$ be connected, undirected graph 
+\begin{itemize}
+	\item $w$, real-valued weight function defined $E$
+	\item $A$, subset of $E$
+	\item $C=(V_C,E_C$, connected component tree in $G_A = (V,A)$
+\end{itemize}
+If $(u,v)$ is a light edge connecting $C$ then $(u,v)$ is safe for $A$
+\section{Proof:}
+\begin{enumerate}
+	\item The cut $(V_C ,V-V_C )$ respects $A$ and $(u,v)$ is a light edge for
+		this cut
+	\item Therefore, $(u,v)$ is safe for $A$
+\end{enumerate}		
+\end{document}
