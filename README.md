@@ -1,2 +1,2 @@
 # FA
-This are notes
+These are notes
